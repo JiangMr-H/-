@@ -30,7 +30,7 @@
 					class="fa fa-address-book"></i> <span>通讯录</span></a></li>
 
 			<li id="treeview"><a
-					href="${pageContext.request.contextPath}/pages/Pay-list.jsp"><i
+					href="${pageContext.request.contextPath}/pay/findPayList.do"><i
 					class="fa fa-id-card"></i> <span>工资查询</span></a></li>
 
 			<li class="treeview"><a href="#"> <i class="fa fa-cogs"></i>
@@ -54,28 +54,19 @@
 							<i class="fa fa-circle-o"></i> 薪资管理
 					</a></li>
 					<li ><a
-						href="${pageContext.request.contextPath}/sysLog/findAll.do"> <i
-							class="fa fa-circle-o"></i> 访问日志
-					</a></li>
-				</ul>
-			</li>
-			<li class="treeview"><a href="#"> <i class="fa fa-cube"></i>
-					<span>用户设置</span> <span class="pull-right-container"> <i
-						class="fa fa-angle-left pull-right"></i>
-				</span>
-			</a>
-				<ul class="treeview-menu">
-
-					<li ><a
-						href="${pageContext.request.contextPath}/pages/ChangePassword.jsp">
-							<i class="fa fa-circle-o"></i> 修改密码
+							href="${pageContext.request.contextPath}/pages/ChangePassword.jsp">
+						<i class="fa fa-circle-o"></i> 修改密码
 					</a></li>
 					<li ><a
-							                                       <%--表示分页时 默认它为第一页 每页显示4条--%>
-						href="${pageContext.request.contextPath}/pages/ForgetPassword.jsp"> <i
+					<%--表示分页时 默认它为第一页 每页显示4条--%>
+							href="${pageContext.request.contextPath}/pages/forgetPassword.jsp"> <i
 							class="fa fa-circle-o"></i> 忘记密码
 					</a></li>
 
+					<li ><a
+						href="${pageContext.request.contextPath}/sysLog/findAll.do"> <i
+							class="fa fa-circle-o"></i> 访问日志
+					</a></li>
 				</ul>
 			</li>
 
