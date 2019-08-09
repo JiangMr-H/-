@@ -1,8 +1,8 @@
 /**
  * Copyright (C), 2015-2019, XXX有限公司
- * FileName: User
+ * FileName: Permission
  * Author:   891649
- * Date:     2019/8/5 16:12
+ * Date:     2019/8/7 16:04
  * Description:
  * History:
  * <author>          <time>          <version>          <desc>
@@ -11,7 +11,6 @@
 
 package com.Pay.domian;
 
-
 import java.util.List;
 
 /**
@@ -19,18 +18,14 @@ import java.util.List;
  * 〈〉
  *
  * @author 891649
- * @create 2019/8/5
+ * @create 2019/8/7
  * @since 1.0.0
  */
-public class User {
-
-    private String id;
-
-    private String username;
-
-    private String password;
-
-    private List<Role> roles;
+public class Permission {
+       private String id;
+       private String permissionName;
+       private String urlName;
+       private List<Role> roles;
 
     public String getId() {
         return id;
@@ -40,20 +35,20 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getPermissionName() {
+        return permissionName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setPermissionName(String permissionName) {
+        this.permissionName = permissionName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUrlName() {
+        return urlName;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUrlName(String urlName) {
+        this.urlName = urlName;
     }
 
     public List<Role> getRoles() {

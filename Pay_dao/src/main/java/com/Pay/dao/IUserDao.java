@@ -12,8 +12,8 @@
 package com.Pay.dao;
 
 import com.Pay.domian.AddressBook;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import com.Pay.domian.UserInfo;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -26,8 +26,13 @@ import java.util.List;
  * @since 1.0.0
  */
 public interface IUserDao {
-    //查询所有员工信息
 
+
+    @Select("select \"password\" from \"users\" where \"password\"=#{username}")
+     UserInfo findpassword(String username)throws Exception;
+
+
+    //查询所有员工信息
     @Select("select \"userId\",\"Username\",\"Monad\",\"sex\",\"Post\",\"phone\",\"wageSystem\" from \"AddressBook\"")
     List<AddressBook> findAll()throws Exception;
 
@@ -49,4 +54,17 @@ public interface IUserDao {
             "</when>",
             "</script>"})
     List<AddressBook> findByConditionList(@Param("userID") String userID, @Param("username") String username, @Param("userPost") String userPost, @Param("userWork") String userWork);
+
+
+
+@Select("SELECT * FROM \"Users\" where \"username\" = #{username}")
+@Results({
+        @Result(id=true,property = "id",column = "id"),
+        @Result(property = "username",column = "username"),
+        @Result(property = "password",column = "password"),
+        @Result(property = "status",column = "status"),
+        @Result(property = "roles",column="id",javaType = java.util.List.class,many = @Many(select = "com.Pay.dao.IRoleDao.findByUserId")),
+})
+    UserInfo findByUsername(String username)throws Exception;
+
 }

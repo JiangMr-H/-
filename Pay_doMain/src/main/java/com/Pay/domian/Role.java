@@ -11,6 +11,8 @@
 
 package com.Pay.domian;
 
+import java.util.List;
+
 /**
  * 〈一句话功能简述〉<br> 
  * 〈〉
@@ -26,6 +28,16 @@ public class Role {
     private String roleName;
 
     private String roleDesc;
+
+    private List<Permission> permissions;
+
+    public List<Permission> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(List<Permission> permissions) {
+        this.permissions = permissions;
+    }
 
     public String getId() {
         return id;

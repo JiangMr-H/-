@@ -1,8 +1,8 @@
 /**
  * Copyright (C), 2015-2019, XXX有限公司
- * FileName: IUserService
+ * FileName: IPayService
  * Author:   891649
- * Date:     2019/8/5 14:44
+ * Date:     2019/8/7 11:22
  * Description:
  * History:
  * <author>          <time>          <version>          <desc>
@@ -11,18 +11,19 @@
 
 package com.Pay.service;
 
-import com.Pay.domian.UserInfo;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import com.Pay.domian.Pay;
+
+import java.util.List;
 
 /**
  * 〈一句话功能简述〉<br> 
  * 〈〉
  *
  * @author 891649
- * @create 2019/8/5
+ * @create 2019/8/7
  * @since 1.0.0
  */
-public interface IUserService extends UserDetailsService {
+public interface IPayService {
 
-
+    List<Pay> findPayList(String username);
 }
