@@ -41,7 +41,7 @@
 				<ul class="treeview-menu">
 					<li id="system-setting">
 						<a
-						href="${pageContext.request.contextPath}/pages/UserManager.jsp"> <i
+						href="${pageContext.request.contextPath}/user/findUserAll.do"> <i
 							class="fa fa-circle-o"></i> 用户管理
 					</a>
 					</li>

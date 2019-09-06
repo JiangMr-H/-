@@ -20,8 +20,8 @@
             content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
             name="viewport">
 
-    <%-- <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>--%>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
 
     <link rel="stylesheet"
@@ -115,13 +115,13 @@
                     <!-- 数据表格 -->
                     <div class="table-box">
                         <!--工具栏-->
-                        <form action="${pageContext.request.contextPath}/AddressBook/findByCondition.do" method="post">
+                        <form action="${pageContext.request.contextPath}/user/findUserAll.do" method="post">
                             <div class="pull-right">
                                 <div class="form-group form-inline">
                                     <div class="btn-group">
-                                        <button type="submit" class="btn btn-default queryUserInfo" title="查询"
+                                        <button type="submit" class="btn btn-default queryUserInfo" title="刷新"
                                                 data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
-                                            <i class="fa fa-file-o"></i> 查询
+                                            <i class="fa fa-file-o"></i> 刷新
                                         </button>
                                     </div>
                                 </div>
@@ -134,76 +134,109 @@
                                        placeholder="用户账号" style="width: 150px; float: left;margin-right: 30px" value="">
                             </div>
                         </form>
-                        <form action="${pageContext.request.contextPath}/AddressBook/findByCondition.do" method="post">
-                            <div class="pull-right">
-                                <div class="form-group form-inline">
-                                    <div class="btn-group">
 
-                                        <button type="submit" class="btn btn-default queryUserInfo" title="批量导入"
-                                                data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
-                                            <i class="fa fa-id-card"></i> 批量导入
-                                        </button>
+                        <div class="pull-right">
+                            <div class="form-group form-inline">
+                                <div class="btn-group">
 
-                                    </div>
+                                    <button type="button" class="btn btn-primary" title="批量导入" data-toggle="modal"
+                                            data-target="#exampleModal2" data-whatever="@mdo">
+                                        <i class="fa fa-address-card"></i> 批量导入
+                                    </button>
                                 </div>
                             </div>
-                        </form>
-                        <form action="${pageContext.request.contextPath}/AddressBook/findByCondition.do" method="post">
-                            <div class="pull-right">
-                                <div class="form-group form-inline">
-                                    <div class="btn-group">
+                        </div>
 
-                                        <button type="button" class="btn btn-primary" title="导入" data-toggle="modal"
-                                                data-target="#exampleModal" data-whatever="@mdo">
-                                            <i class="fa fa-address-card"></i> 导入
-                                        </button>
+                        <div class="pull-right">
+                            <div class="form-group form-inline">
+                                <div class="btn-group">
 
-                                    </div>
+                                    <button type="button" class="btn btn-primary" title="导入" data-toggle="modal"
+                                            data-target="#exampleModal" data-whatever="@mdo">
+                                        <i class="fa fa-address-card"></i> 导入
+                                    </button>
                                 </div>
                             </div>
-                        <div id="exampleModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+                        </div>
+
+                        <div id="exampleModal" class="modal fade" tabindex="-1" role="dialog"
+                             aria-labelledby="gridSystemModalLabel">
                             <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" id="gridSystemModalLabel">单个录入</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div style="width: 80px;margin-top: 5px;float: left;margin-left: 30px">
-                                            用户账号：
+                                <form action="${pageContext.request.contextPath}/user/save.do" method="post">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="gridSystemModalLabel">单个录入</h4>
                                         </div>
+                                        <div class="modal-body">
+                                            <div style="width: 80px;margin-top: 5px;float: left;margin-left: 30px">
+                                                用户账号：
+                                            </div>
 
-                                        <input type="text" class="form-control" name="userID"
-                                               placeholder="用户账号"
-                                               style="width: 150px; float: left;margin-right: 30px"
-                                               value="">
+                                            <input type="text" class="form-control" name="username"
+                                                   placeholder="用户账号"
+                                                   style="width: 150px; float: left;margin-right: 30px"
+                                                   value="">
 
-                                        <div style="width: 50px;margin-top: 5px;  ;margin-left: 30px; float: left">
-                                            密码：
+                                            <div style="width: 50px;margin-top: 5px;margin-left: 30px; float: left">
+                                                密码：
+                                            </div>
+                                            <input type="text" class="form-control " name="password"
+                                                   placeholder="密码" style="width: 150px; float: left" value="">
+                                            <br/>
+
+                                            <%--  <div class="form-group" style="margin-left: 35px;margin-top: 45px">
+                                                  <label>
+                                                      <input type="checkbox" name="statusString" class="minimal" checked> 开启
+                                                  </label>
+                                                  <label style="padding-left: 35px">
+                                                      <input type="checkbox" name="statusString" class="minimal">  关闭
+                                                  </label>
+
+                                              </div>--%>
+
                                         </div>
-                                        <input type="text" class="form-control " name="username"
-                                               placeholder="密码" style="width: 150px; float: left" value="">
                                         <br/>
-                                        <br/>
-                                        <div class="form-group pull-left" style="padding-left: 35px;padding-top: 35px">
-                                            <label>
-                                                开启
-                                                <input type="radio" name="r2" class="minimal-red" checked>
-                                            </label>
-                                            <label style="margin-left: 35px">
-                                                关闭
-                                                <input type="radio" name="r2" class="minimal-red">
-                                            </label>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">保存</button>
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                        <button type="button" class="btn btn-primary">保存</button>
-                                    </div>
-                                </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-content -->
+                                </form>
                             </div><!-- /.modal-dialog -->
                         </div><!-- /.modal -->
-                        </form>
+
+                        <div id="exampleModal2" class="modal fade" tabindex="-1" role="dialog"
+                             aria-labelledby="gridSystemModalLabel">
+                            <div class="modal-dialog" role="document">
+
+                                <form action="${pageContext.request.contextPath}/user/insertUser.do"
+                                      method="post" enctype="multipart/form-data">
+
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="gridSystemModalLabel2">请选择文件:</h4>
+                                        </div>
+                                        <input type="file" name="file"><br/>
+                                        <br/>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">录入</button>
+                                        </div>
+
+                                    </div><!-- /.modal-content -->
+
+
+
+                                </form>
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
                         <!--工具栏/-->
 
                         <!--数据列表-->
@@ -213,18 +246,15 @@
                             <tr>
                                 <th class="sorting_desc text-center sorting">用户账号</th>
                                 <th class="sorting_asc sorting_asc_disabled text-center sorting">用户密码</th>
+                                <th class="sorting_asc text-center sorting">状态</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${pageInfo.list}" var="AddressBook">
+                            <c:forEach items="${pageInfo.list}" var="user">
                                 <tr>
-                                    <td class="text-center">${AddressBook.userId }</td>
-                                    <td class="text-center">${AddressBook.username }</td>
-                                    <td class="text-center">${AddressBook.monad }</td>
-                                    <td class="text-center">${AddressBook.sex }</td>
-                                    <td class="text-center">${AddressBook.post }</td>
-                                    <td class="text-center">${AddressBook.phone }</td>
-                                    <td class="text-center">${AddressBook.wageSystem }</td>
+                                    <td class="text-center">${user.username }</td>
+                                    <td class="text-center">${user.password }</td>
+                                    <td class="text-center">${user.statusString }</td>
                                 </tr>
                             </c:forEach>
                             </tbody>
@@ -250,27 +280,51 @@
                         </div>
                     </div>
 
+
                     <div class="box-tools pull-right">
                         <ul class="pagination">
                             <li>
-                                <a href="${pageContext.request.contextPath}/AddressBook/findAll.do?page=1&size=${pageInfo.pageSize}"
+                                <a href="${pageContext.request.contextPath}/user/findUserAll.do?page=1&size=${pageInfo.pageSize}"
                                    aria-label="Previous">首页</a></li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/AddressBook/findAll.do?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}">上一页</a>
+                                <a href="${pageContext.request.contextPath}/user/findUserAll.do?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}">上一页</a>
                             </li>
                             <c:forEach begin="${pageInfo.pageNum}" end="${pageInfo.pageNum}" var="pageNum">
                                 <li>
-                                    <a href="${pageContext.request.contextPath}/AddressBook/findAll.do?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a>
+                                    <a href="${pageContext.request.contextPath}/user/findUserAll.do?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a>
                                 </li>
                             </c:forEach>
                             <li>
-                                <a href="${pageContext.request.contextPath}/AddressBook/findAll.do?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}">下一页</a>
+                                <a href="${pageContext.request.contextPath}/user/findUserAll.do?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}">下一页</a>
                             </li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/AddressBook/findAll.do?page=${pageInfo.pages}&size=${pageInfo.pageSize}"
+                                <a href="${pageContext.request.contextPath}/user/findUserAll.do?page=${pageInfo.pages}&size=${pageInfo.pageSize}"
                                    aria-label="Next">尾页</a></li>
                         </ul>
                     </div>
+
+
+                    <%--<div class="box-tools pull-right">
+                        <ul class="pagination">
+                            <li>
+                                <a href="${pageContext.request.contextPath}/user/findUserAll.do?page=1&size=${pageInfo.pageSize}"
+                                   aria-label="Previous">首页</a></li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/user/findUserAll.do?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}">上一页</a>
+                            </li>
+                            <c:forEach begin="${pageInfo.pageNum}" end="${pageInfo.pageNum}" var="pageNum">
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/user/findUserAll.do?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a>
+                                </li>
+                            </c:forEach>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/user/findUserAll.do?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}">下一页</a>
+                            </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/user/findUserAll.do?page=${pageInfo.pages}&size=${pageInfo.pageSize}"
+                                   aria-label="Next">尾页</a></li>
+                        </ul>
+                    </div>--%>
 
                 </div>
                 <!-- /.box-footer-->
@@ -378,7 +432,7 @@
         //获取下拉框的值
         var pageSize = $("#changePageSize").val();
         //向服务器发送请求，改变没页显示条数
-        location.href = "${pageContext.request.contextPath}/AddressBook/findAll.do?page=1&size="
+        location.href = "${pageContext.request.contextPath}/user/findUserAll.do?page=1&size="
             + pageSize;
     }
 
